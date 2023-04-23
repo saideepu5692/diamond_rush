@@ -38,8 +38,8 @@ answer2 = st.text_input("Enter your answer here")
 # Add the text to the webpage
 
 st.write("Clue:")
-audio_file = open(r"C:\Users\saide\OneDrive\Desktop\vs\audio_file.mp3", "rb").read()
-st.audio(audio_file, format="audio/mp3")
+response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/audio_file.mp3")
+st.audio(response.content, format='audio/mp3')
 
 # Get a Firestore client
 
