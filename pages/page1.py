@@ -30,6 +30,11 @@ st.write(question)
 # Create the input box for the user to enter their answer
 answer1 = st.text_input("Enter your answer here")
 # Add the text to the webpage
+if(answer1):
+    if(answer1=='629 Lakeview Drive'):
+        st.write("Correct! Go along the road to find new hint")
+    else:
+        st.write("Wrong!Go to map page and try again")
 st.write("Clue")
 #image = Image.open(r'C:\Users\barga\Streamlit_run\pages\hint_image_1.jpg')
 #st.markdown("<div style='text-align: center'><img src='https://drive.google.com/uc?export=view&id=1eoja7u80xJMDSUGCRkYtQvgT8AaoLkN-' width='100'></div>", unsafe_allow_html=True)
@@ -40,8 +45,4 @@ st.image("https://drive.google.com/uc?export=view&id=1eoja7u80xJMDSUGCRkYtQvgT8A
 #st.write(eval(db))
 db = firestore.client()
 db.collection('my_collection').document(st.session_state.get('uid')).update({"answer1":answer1})
-if(answer1):
-    if(answer1=='629 Lakeview Drive'):
-        st.write("Correct! Go along the road to find new hint")
-    else:
-        st.write("Wrong!Go to map page and try again")
+
