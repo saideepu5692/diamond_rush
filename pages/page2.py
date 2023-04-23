@@ -40,6 +40,11 @@ st.write(option2)
 st.write(option3)
 st.write(option4)
 answer2 = st.text_input("Enter your answer here",key="abc")
+if(answer2):
+    if(answer2=='1'):
+        st.write("Correct! Go along the road to find new hint")
+    else:
+        st.write("Wrong!Go to map page and try again")
 st.write("Clue:")
 response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/audio_file.mp3")
 st.audio(response.content, format='audio/mp3')
@@ -47,8 +52,4 @@ st.audio(response.content, format='audio/mp3')
 # Get a Firestore client
 db = firestore.client()
 db.collection('my_collection').document(st.session_state.get('uid')).update({"answer2":answer2})
-if(answer2):
-    if(answer2=='1'):
-        st.write("Correct! Go along the road to find new hint")
-    else:
-        st.write("Wrong!Go to map page and try again")
+
