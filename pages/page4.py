@@ -27,7 +27,11 @@ st.write(question2)
 
 # Create the input box for the user to enter their answer
 # Add the text to the webpage
-
+if(answer4):
+    if(answer4=='MLR'):
+        st.write("Correct! Go along the road to find new hint")
+    else:
+        st.write("Wrong!Go to map page and try again")
 st.write("Clue:")
 #video_file = open(r'C:\Users\saide\OneDrive\Desktop\vs\video_hint4.mp4', 'rb')
 #video_bytes = video_file.read()
