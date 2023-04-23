@@ -39,5 +39,7 @@ db = firestore.client()
 db.collection('my_collection').document(st.session_state.get('uid')).update({"answer4":answer4})
 
 
-if(answer4):
-    st.write("You have entered your input. please return to main page")
+if(answer4=='MLR'):
+    st.write("Correct! Go along the road to find new hint")
+else:
+    st.write("Wrong!Go to map page and try again")
