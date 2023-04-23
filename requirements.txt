@@ -1,3 +1,2 @@
 pyrebase
 firebase-admin
-PIL
