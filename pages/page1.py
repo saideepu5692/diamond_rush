@@ -4,11 +4,16 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 import webbrowser
 from PIL import Image
+import requests
+from io import BytesIO
+
 data={}
 
 # Initialize a Firebase app
 if not firebase_admin._apps:
-    cred = credentials.Certificate(r"C:\Users\barga\Streamlit_run\pages\diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json")
+    # Replace GITHUB_RAW_URL with the raw URL of your .json file in your GitHub repository
+    response = requests.get('https://github.com/saideepu5692/diamond_rush/blob/1187a93ad1140796b0010fbf7e28075fffb2260b/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json')
+    cred = credentials.Certificate(BytesIO(response.content))
     firebase_admin.initialize_app(cred)
 
 
