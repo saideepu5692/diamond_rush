@@ -43,7 +43,7 @@ st.audio(response.content, format='audio/mp3')
 
 # Get a Firestore client
 
-db.collection('my_collection').document('my_document').update({"answer2":answer2})
+db.collection('my_collection').document(st.session_state.get('uid')).update({"answer2":answer2})
 
 if(answer2):
     st.write("You have entered your input. please return to main page by clicking below button")
