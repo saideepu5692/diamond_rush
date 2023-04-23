@@ -30,29 +30,30 @@ st.write(text)
 question51="What was the name of Bhargav's Grandfather?"
 st.write(question51)
 answer51=st.text_input("Enter your answer here", key="hint51")
-if(answer51=='Vikramacharya'):
-    question52="What was the color of the stick the Oldman was using?"
-    st.write(question52)
-    answer52=st.text_input("Enter your answer here", key="hint52")
-    if(answer52=='Blue'):
-        question53="Is the girl who was murdered a married person?"
-        st.write(question53)
-        answer53=st.text_input("Enter your answer here", key="hint53")
-        if(answer53=='Yes'):
-            question54="How many people were there in total in the Attention to detail video?"
-            st.write(question54)
-            answer54=st.text_input("Enter your answer here", key="hint54")
-            if(answer54='9'):
-                st.write("You have successfully exited the cave!! The treasure with a very big diamond is yours now! Thankyou for playing!")
+if(answer51):
+    if(answer51=='Vikramacharya'):
+        question52="What was the color of the stick the Oldman was using?"
+        st.write(question52)
+        answer52=st.text_input("Enter your answer here", key="hint52")
+        if(answer52=='Blue'):
+            question53="Is the girl who was murdered a married person?"
+            st.write(question53)
+            answer53=st.text_input("Enter your answer here", key="hint53")
+            if(answer53=='Yes'):
+                question54="How many people were there in total in the Attention to detail video?"
+                st.write(question54)
+                answer54=st.text_input("Enter your answer here", key="hint54")
+                if(answer54='9'):
+                    st.write("You have successfully exited the cave!! The treasure with a very big diamond is yours now! Thankyou for playing!")
+                else:
+                    st.write("Wrong! Go to main page and try again")
             else:
                 st.write("Wrong! Go to main page and try again")
         else:
             st.write("Wrong! Go to main page and try again")
     else:
         st.write("Wrong! Go to main page and try again")
-else:
-    st.write("Wrong! Go to main page and try again")
-    
+
 db = firestore.client()
 db.collection('my_collection').document(st.session_state.get('uid')).update({"answer51":answer51,"answer52":answer52,"answer53":answer53,"answer54":answer54})
 
