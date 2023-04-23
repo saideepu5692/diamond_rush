@@ -4,14 +4,6 @@ import json
 from PIL import Image
 import base64
 
-# Define a function to check if the login is valid
-def authenticate(username, password):
-    # Replace this with your authentication logic
-    if username == "user" and password == "password":
-        return True
-    else:
-        return False
-
 # Define the login page
 def login():
     firebaseConfig = {
