@@ -41,5 +41,7 @@ st.image("https://drive.google.com/uc?export=view&id=1eoja7u80xJMDSUGCRkYtQvgT8A
 db = firestore.client()
 db.collection('my_collection').document(st.session_state.get('uid')).update({"answer1":answer1})
 
-if(answer1):
-    st.write("You have entered your input. please return to main page")
+if(answer1=='629 Lakeview Drive'):
+    st.write("Correct! Go along the road to find new hint")
+else:
+    st.write("Wrong!Go to map page and try again")
