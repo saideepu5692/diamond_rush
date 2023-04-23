@@ -93,43 +93,53 @@ def main():
         # Display the main page
         # Set common background image
         # Load image and convert to base64 string
-        image = Image.open("diamond_rush.jpg")
-        image_b64 = base64.b64encode(image.tobytes()).decode()
-    
-        st.image(image, caption="Your image", use_column_width=True)
-        # Set common background image
-        st.markdown(
-            f"""
-            <style>
-            .stApp {{
-                background-image: url('data:image/jpeg;base64,{image_b64}');
-                background-size: cover;
-                }}
-            </style>
-            """,
-            unsafe_allow_html=True,
-        )
+        st.markdown("<style> ul {display: none;} </style>", unsafe_allow_html=True)
+        # Define sidebar contents
+        with st.sidebar:
+            # Add profile icon1fNx44o_jGdQ_WALqYjo_nylaH02yrPx8
+            st.markdown("<div style='text-align: center'><img src='https://drive.google.com/uc?export=view&id=1fNx44o_jGdQ_WALqYjo_nylaH02yrPx8' width='100'></div>", unsafe_allow_html=True)
+            # Add text
+            st.markdown("## Hello!, Welcome to Diamond Rush")
+            st.markdown("Here you can solve the exciting treasure hunt")
 
-        # Create six containers
+        # Define the CSS style
+        style = """
+        <style>
+            .columnImage {
+                box-sizing: border-box;
+                float: left;
+                width: 107%;
+            }
+        </style>
+        """
+
+        # Add the CSS style to the page
+        st.markdown(style, unsafe_allow_html=True)
+
+        # Define the columns
         col1, col2, col3 = st.columns(3)
-        container1 = col1.container()
-        container2 = col2.container()
-        container3 = col3.container()
-
         col4, col5, col6 = st.columns(3)
-        container4 = col4.container()
-        container5 = col5.container()
-        container6 = col6.container()
+        col7, col8, col9 = st.columns(3)
 
-        # Add content to containers
-        container1.write("Container 1")
-        container2.write("Container 2")
-        container3.write("Container 3")
-        container4.write("Container 4")
-        container5.write("Container 5")
-        container6.write("Container 6")
-
-
+        # Add content to each column
+        with col1:
+            st.markdown(f"""<a href="page1"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1z59GvMgWiFOSJGRF9wP_qL9urclIuv9o"></a>""",unsafe_allow_html=True)
+        with col2:
+            st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1iDPB9zJWc_jFErSQV6eFXp4JRU47t1vu"></a>""",unsafe_allow_html=True)
+        with col3:
+            st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=13JqXqmJGadtkASS8oKkRpncxyCXnl9XU"></a>""",unsafe_allow_html=True)
+        with col4:
+            st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1HmIbxSlXSCit8qJ9VGvLpmbKgutqmZ8F"></a>""",unsafe_allow_html=True)
+        with col5:
+            st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1gdakk6gwfVa-0Qw_f-Sitp4zLB8BoiiX"></a>""",unsafe_allow_html=True)
+        with col6:
+            st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1Z_bX1lyfaB4JraiUQ9vX8lh4-ao8_Qki"></a>""",unsafe_allow_html=True)
+        with col7:
+            st.markdown(f"""<a href="page1"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=11bUMmqlRJRDsWbfjkwqaD3--jv-DwkKo"></a>""",unsafe_allow_html=True)
+        with col8:
+            st.markdown(f"""<a href="page2"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=12dSWYJO9didCNBMOAoTZkCUlHNFqffB3"></a>""",unsafe_allow_html=True)
+        with col9:
+            st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=13UvmRI3tpKTF0B8KKvYJE7nLmGwSYbn2"></a>""",unsafe_allow_html=True)
 # Run the app
 if __name__ == "__main__":
     main()
