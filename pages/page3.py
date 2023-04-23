@@ -47,8 +47,8 @@ st.image("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/suppo
 db = firestore.client()
 db.collection('my_collection').document(st.session_state.get('uid')).update({"answer3":answer3})
 
-if(answer3):
-    st.write("You have entered your input. please return to main page")
-        
-
+if(answer3=='2'):
+    st.write("Correct! Go along the road to find new hint")
+else:
+    st.write("Wrong!Go to map page and try again")
 
