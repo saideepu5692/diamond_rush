@@ -1,2 +1,3 @@
+setuptools<58
 pyrebase
 firebase-admin
