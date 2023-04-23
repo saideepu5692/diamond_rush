@@ -26,6 +26,7 @@ st.write(question)
 st.write(question2)
 
 # Create the input box for the user to enter their answer
+answer4 = st.text_input("Enter your answer here", key="hint4")
 # Add the text to the webpage
 if(answer4):
     if(answer4=='MLR'):
