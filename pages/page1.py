@@ -12,8 +12,9 @@ data={}
 # Initialize a Firebase app
 if not firebase_admin._apps:
     # Replace GITHUB_RAW_URL with the raw URL of your .json file in your GitHub repository
-    response = requests.get('https://github.com/saideepu5692/diamond_rush/blob/1187a93ad1140796b0010fbf7e28075fffb2260b/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json')
-    cred = credentials.Certificate(BytesIO(response.content))
+    response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json")
+    json_content = response.json()
+    cred = credentials.Certificate(json_content)
     firebase_admin.initialize_app(cred)
 
 
