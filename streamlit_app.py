@@ -191,23 +191,23 @@ def Home():
     col7, col8, col9 = st.columns(3)
     # Add content to each column
     with col1:
-        st.markdown(f"""<a><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1z59GvMgWiFOSJGRF9wP_qL9urclIuv9o"></a>""",unsafe_allow_html=True)
+        st.markdown(f"""<img class="columnImage" src="https://drive.google.com/uc?export=view&id=1z59GvMgWiFOSJGRF9wP_qL9urclIuv9o">""",unsafe_allow_html=True)
     with col2:
         st.markdown(f"""<a href="page4?uid={st.session_state.get('uid')}"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1iDPB9zJWc_jFErSQV6eFXp4JRU47t1vu"></a>""",unsafe_allow_html=True)
     with col3:
         st.markdown(f"""<a href="page5?uid={st.session_state.get('uid')}"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=13JqXqmJGadtkASS8oKkRpncxyCXnl9XU"></a>""",unsafe_allow_html=True)
     with col4:
-        st.markdown(f"""<a><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1HmIbxSlXSCit8qJ9VGvLpmbKgutqmZ8F"></a>""",unsafe_allow_html=True)
+        st.markdown(f"""<img class="columnImage" src="https://drive.google.com/uc?export=view&id=1HmIbxSlXSCit8qJ9VGvLpmbKgutqmZ8F">""",unsafe_allow_html=True)
     with col5:
         st.markdown(f"""<a href="page3?uid={st.session_state.get('uid')}"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1gdakk6gwfVa-0Qw_f-Sitp4zLB8BoiiX"></a>""",unsafe_allow_html=True)
     with col6:
-        st.markdown(f"""<a><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1Z_bX1lyfaB4JraiUQ9vX8lh4-ao8_Qki"></a>""",unsafe_allow_html=True)
+        st.markdown(f"""<img class="columnImage" src="https://drive.google.com/uc?export=view&id=1Z_bX1lyfaB4JraiUQ9vX8lh4-ao8_Qki">""",unsafe_allow_html=True)
     with col7:
         st.markdown(f"""<a href="page1?uid={st.session_state.get('uid')}"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=11bUMmqlRJRDsWbfjkwqaD3--jv-DwkKo"></a>""",unsafe_allow_html=True)
     with col8:
         st.markdown(f"""<a href="page2?uid={st.session_state.get('uid')}"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=12dSWYJO9didCNBMOAoTZkCUlHNFqffB3"></a>""",unsafe_allow_html=True)
     with col9:
-        st.markdown(f"""<a><img class="columnImage" src="https://drive.google.com/uc?export=view&id=13UvmRI3tpKTF0B8KKvYJE7nLmGwSYbn2"></a>""",unsafe_allow_html=True)
+        st.markdown(f"""<img class="columnImage" src="https://drive.google.com/uc?export=view&id=13UvmRI3tpKTF0B8KKvYJE7nLmGwSYbn2">""",unsafe_allow_html=True)
 # Define the main page
 def main():
     # Check if the user is authenticated
