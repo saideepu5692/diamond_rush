@@ -3,18 +3,20 @@ import pyrebase
 import json
 from PIL import Image
 import firebase_admin
-from firebase_admin import credentials, firestore
+from firebase_admin import credentials, firestore, auth
 import requests
+import pandas as pd
 st.set_page_config(
     page_title="My Streamlit App",
     page_icon=":guardsman:",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
+st.header("Welcome to Diamond Rush!")
 # Define a function to check if the login is valid
 def authenticate(username, password):
     # Replace this with your authentication logic
-    if username == "user" and password == "password":
+    if username == "admin@gmail.com" and password == "diamondrush":
         return True
     else:
         return False
@@ -41,16 +43,19 @@ def login():
         email = st.text_input("Email", key="login-email")
         password = st.text_input("Password", type="password", key="login-password")
         if st.button("Login"):
-            try:
-                # Authenticate the user's credentials
-                user = auth.sign_in_with_email_and_password(email, password)
-                st.session_state["uid"]=user["localId"]
-                st.session_state["authenticated"] = True
-                #s.experimental_rerun()
-                # Redirect to the main page
-                # Or display an error message if the credentials are incorrect
-            except:
-                st.error("Authentication failed. Please check your credentials and try again.")
+            if(authenticate(email,password)):
+                st.session_state["admin"] = True
+            else:
+                try:
+                    # Authenticate the user's credentials
+                    user = auth.sign_in_with_email_and_password(email, password)
+                    st.session_state["uid"]=user["localId"]
+                    st.session_state["authenticated"] = True
+                    #s.experimental_rerun()
+                    # Redirect to the main page
+                    # Or display an error message if the credentials are incorrect
+                except:
+                    st.error("Authentication failed. Please check your credentials and try again.")
         if st.button("Sign Up"):
             # Show the sign-up page
             st.session_state['signup'] = True
@@ -101,6 +106,51 @@ def login():
         forgot_password_page()
     else:
         login_page()
+def admin():
+    st.header("Admin Page")
+    st.header("Leaderboard")
+    if not firebase_admin._apps:
+        # Replace GITHUB_RAW_URL with the raw URL of your .json file in your GitHub repository
+        response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json")
+        json_content = response.json()
+        cred = credentials.Certificate(json_content)
+        firebase_admin.initialize_app(cred)
+    db = firestore.client()
+    uidd=[]
+    answer1=[]
+    answer2=[]
+    answer3=[]
+    answer4=[]
+    answer51=[]
+    answer52=[]
+    answer53=[]
+    answer54=[]
+    email=[]
+    # Extract data from Firestore database
+    users_ref = db.collection("my_collection")
+    for doc in users_ref.stream():
+        data = doc.to_dict()
+        answer1.append(data['answer1'])
+        answer2.append(data['answer2'])
+        answer3.append(data['answer3'])
+        answer4.append(data['answer4'])
+        answer51.append(data['answer51'])
+        answer52.append(data['answer52'])
+        answer53.append(data['answer53'])
+        answer54.append(data['answer54'])
+    docs = db.collection('my_collection').get()
+    # Display the document names and email addresses in Streamlit
+    for doc in docs:
+        uid = doc.id
+        user = auth.get_user(uid)
+        email1= user.email 
+        uidd.append(uid)
+        email.append(email1)
+
+    # Create a DataFrame from the inputs
+    data = {'email':email,'answer1': answer1,'answer2':answer2,'answer3':answer3,'answer4':answer4,'answer51':answer51,'answer52':answer52,'answer53':answer53,'answer54':answer54,'uid':uidd}
+    df = pd.DataFrame(data)
+    st.table(df)
 def Home():
     data={}
     # Initialize a Firebase app
@@ -119,7 +169,9 @@ def Home():
         # Add profile icon1fNx44o_jGdQ_WALqYjo_nylaH02yrPx8
         st.markdown("<div style='text-align: center'><img src='https://drive.google.com/uc?export=view&id=1fNx44o_jGdQ_WALqYjo_nylaH02yrPx8' width='100'></div>", unsafe_allow_html=True)
         # Add text
-        st.markdown("## Hello!, Welcome to Diamond Rush")
+        user = auth.get_user(st.session_state["uid"])
+        email1= user.email
+        st.markdown("## Hello!"+email1+", Welcome to Diamond Rush")
         st.markdown("Here you can solve the exciting treasure hunt")
     # Define the CSS style
     style = """
@@ -147,11 +199,11 @@ def Home():
     with col4:
         st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1HmIbxSlXSCit8qJ9VGvLpmbKgutqmZ8F"></a>""",unsafe_allow_html=True)
     with col5:
-        st.markdown(f"""<a href="/page3?uid={st.session_state.get('uid')}" target="_self"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1gdakk6gwfVa-0Qw_f-Sitp4zLB8BoiiX"></a>""",unsafe_allow_html=True)
+        st.markdown(f"""<a href="page3?uid={st.session_state.get('uid')}"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1gdakk6gwfVa-0Qw_f-Sitp4zLB8BoiiX"></a>""",unsafe_allow_html=True)
     with col6:
         st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1Z_bX1lyfaB4JraiUQ9vX8lh4-ao8_Qki"></a>""",unsafe_allow_html=True)
     with col7:
-        st.markdown(f"""<a href="/page1?uid={st.session_state.get('uid')}" target="_self"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=11bUMmqlRJRDsWbfjkwqaD3--jv-DwkKo"></a>""",unsafe_allow_html=True)
+        st.markdown(f"""<a href="page1?uid={st.session_state.get('uid')}"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=11bUMmqlRJRDsWbfjkwqaD3--jv-DwkKo"></a>""",unsafe_allow_html=True)
     with col8:
         st.markdown(f"""<a href="page2?uid={st.session_state.get('uid')}"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=12dSWYJO9didCNBMOAoTZkCUlHNFqffB3"></a>""",unsafe_allow_html=True)
     with col9:
@@ -162,6 +214,8 @@ def main():
     params = st.experimental_get_query_params()
     if(("authenticated" in st.session_state)or(params!={})):
         Home()
+    elif("admin" in st.session_state):
+        admin()
     else:
         # Display the main page
         # Set common background image
