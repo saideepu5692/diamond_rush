@@ -42,7 +42,7 @@ response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_
 st.audio(response.content, format='audio/mp3')
 
 # Get a Firestore client
-
+db = firestore.client()
 db.collection('my_collection').document(st.session_state.get('uid')).update({"answer2":answer2})
 
 if(answer2):
