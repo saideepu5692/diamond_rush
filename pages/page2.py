@@ -3,7 +3,6 @@ import os
 import firebase_admin
 from firebase_admin import credentials, firestore
 import webbrowser
-from page1 import db
 
 # Initialize a Firebase app
 if not firebase_admin._apps:
@@ -42,8 +41,7 @@ response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_
 st.audio(response.content, format='audio/mp3')
 
 # Get a Firestore client
-db = firestore.client()
-db.collection('my_collection').document(st.session_state.get('uid')).update({"answer2":answer2})
+st.session_state['db'].collection('my_collection').document(st.session_state.get('uid')).update({"answer2":answer2})
 
 if(answer2):
     st.write("You have entered your input. please return to main page by clicking below button")
