@@ -38,7 +38,6 @@ st.write("Clue:")
 #video_bytes = video_file.read()
 response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/video_hint4.mp4")
 st.video(response.content)
-answer4 = st.text_input("Enter your answer here", key="hint4")
 # Get a Firestore client
 db = firestore.client()
 db.collection('my_collection').document(st.session_state.get('uid')).update({"answer4":answer4})
