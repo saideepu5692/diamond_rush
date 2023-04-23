@@ -1,5 +1,7 @@
 Project Name: Diamond Rush
+
 Time taken to complete the project: 7 days
+
 Project Description: This interactive treasure hunt game consists of clues and hints in which the softskills of the user(such as Eye for detail, attentiveness etc) are tested.
 The project details are as follows:
     1) Clue 1: It examines the capability to the user to see things differently and remember what he saw. As it is the first hint, inorder to make game interesting, the difficulty level is easy.
