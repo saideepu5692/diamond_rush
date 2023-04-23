@@ -47,8 +47,8 @@ st.audio(response.content, format='audio/mp3')
 # Get a Firestore client
 db = firestore.client()
 db.collection('my_collection').document(st.session_state.get('uid')).update({"answer2":answer2})
-
-if(answer2=='1'):
-    st.write("Correct! Go along the road to find new hint")
-else:
-    st.write("Wrong!Go to map page and try again")
+if(answer2):
+    if(answer2=='1'):
+        st.write("Correct! Go along the road to find new hint")
+    else:
+        st.write("Wrong!Go to map page and try again")
