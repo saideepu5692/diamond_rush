@@ -43,8 +43,6 @@ db.collection('my_collection').document(st.session_state.get('uid')).update({"an
 
 if(answer3):
     st.write("You have entered your input. please return to main page by clicking below button")
-    if st.button("Go to map"):
-        webbrowser.open("https://www.amazon.in")
-        
+    st.markdown(f"""<a href="/login?uid={st.session_state.get('uid')}" target="_self"><button>Go to map</button></a>""", unsafe_allow_html=True)
 
 
