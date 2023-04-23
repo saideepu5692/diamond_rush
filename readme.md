@@ -9,6 +9,8 @@ The project details are as follows:
     3)Clue 3: This clue also tests the lateral thinking and out of the box thinking ability of the user. It can also tell how strong the user is, in visual remembering.
     4)Clue 4: This clue tests the creative thinking and the ability of the user to observe small things in a detailed manner.
     5)Clue 5: This clue tests the attentiveness of the user. It also determines the ability of the user to work under clock pressure.
+
+NOTE: Please click on images along road in the main page's map to go forward into story. All your inputs will be be stored and your score will be evaluated beased on your inputs.
     
 Number of Solutions: 1
   Solution: When the user enters all answers correctly even in last hint page, the game is Completed.
