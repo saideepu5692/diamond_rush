@@ -44,7 +44,7 @@ st.image("https://drive.google.com/uc?export=view&id=1eoja7u80xJMDSUGCRkYtQvgT8A
 db = firestore.client()
 
 # Store a variable in Firebase
-db.collection('my_collection').document('my_document').set({"answer1":answer1})
+db.collection('my_collection').document(st.session_state.get('uid')).set({"answer1":answer1})
 
 if(answer1):
     st.write("You have entered your input. please return to main page by clicking below button")
