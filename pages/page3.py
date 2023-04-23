@@ -36,7 +36,11 @@ st.write(option2)
 # Create the input box for the user to enter their answer
 answer3 = st.text_input("Enter your answer here", key="hint3")
 # Add the text to the webpage
-
+if(answer3):
+    if(answer3=='2'):
+        st.write("Correct! Go along the road to find new hint")
+    else:
+        st.write("Wrong!Go to map page and try again")
 st.write("Clue:")
 #response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/image_hint3.jpg")
 #st.write(response.text)
@@ -46,9 +50,5 @@ st.image("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/suppo
 # Get a Firestore client
 db = firestore.client()
 db.collection('my_collection').document(st.session_state.get('uid')).update({"answer3":answer3})
-if(answer3):
-    if(answer3=='2'):
-        st.write("Correct! Go along the road to find new hint")
-    else:
-        st.write("Wrong!Go to map page and try again")
+
 
