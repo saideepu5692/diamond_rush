@@ -5,7 +5,12 @@ from PIL import Image
 import firebase_admin
 from firebase_admin import credentials, firestore
 import requests
-
+st.set_page_config(
+    page_title="My Streamlit App",
+    page_icon=":guardsman:",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+)
 # Define a function to check if the login is valid
 def authenticate(username, password):
     # Replace this with your authentication logic
@@ -16,6 +21,8 @@ def authenticate(username, password):
 
 # Define the login page
 def login():
+    st.markdown("<style> ul {display: none;} </style>", unsafe_allow_html=True)
+
     firebaseConfig = {
         # Add your Firebase configuration details here
         'apiKey': "AIzaSyBaP-ig_zlk7o5ixfg2NVDoSlaSuHfZCV0",
@@ -30,7 +37,6 @@ def login():
     firebase = pyrebase.initialize_app(firebaseConfig)
     auth = firebase.auth()
     db = firebase.database()
-    st.markdown("<style> ul {display: none;} </style>", unsafe_allow_html=True)
     def login_page():
         email = st.text_input("Email", key="login-email")
         password = st.text_input("Password", type="password", key="login-password")
@@ -106,8 +112,7 @@ def Home():
         firebase_admin.initialize_app(cred)
     db = firestore.client()
     # Store a variable in Firebase
-    db.collection('my_collection').document(st.session_state.get('uid')).set({})
-    st.session_state['db']=db
+    db.collection('my_collection').document(st.session_state.get('uid')).set({'answer1':'NA','answer2':'NA','answer3':'NA','answer4':'NA','answer51':'NA','answer52':'NA','answer53':'NA','answer54':'NA'})
     st.markdown("<style> ul {display: none;} </style>", unsafe_allow_html=True)
     # Define sidebar contents
     with st.sidebar:
@@ -136,31 +141,32 @@ def Home():
     with col1:
         st.markdown(f"""<a href="#"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1z59GvMgWiFOSJGRF9wP_qL9urclIuv9o"></a>""",unsafe_allow_html=True)
     with col2:
-        st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1iDPB9zJWc_jFErSQV6eFXp4JRU47t1vu"></a>""",unsafe_allow_html=True)
+        st.markdown(f"""<a href="page4?uid={st.session_state.get('uid')}"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1iDPB9zJWc_jFErSQV6eFXp4JRU47t1vu"></a>""",unsafe_allow_html=True)
     with col3:
-        st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=13JqXqmJGadtkASS8oKkRpncxyCXnl9XU"></a>""",unsafe_allow_html=True)
+        st.markdown(f"""<a href="page5?uid={st.session_state.get('uid')}"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=13JqXqmJGadtkASS8oKkRpncxyCXnl9XU"></a>""",unsafe_allow_html=True)
     with col4:
         st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1HmIbxSlXSCit8qJ9VGvLpmbKgutqmZ8F"></a>""",unsafe_allow_html=True)
     with col5:
-        st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1gdakk6gwfVa-0Qw_f-Sitp4zLB8BoiiX"></a>""",unsafe_allow_html=True)
+        st.markdown(f"""<a href="/page3?uid={st.session_state.get('uid')}" target="_self"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1gdakk6gwfVa-0Qw_f-Sitp4zLB8BoiiX"></a>""",unsafe_allow_html=True)
     with col6:
         st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=1Z_bX1lyfaB4JraiUQ9vX8lh4-ao8_Qki"></a>""",unsafe_allow_html=True)
     with col7:
-        st.markdown(f"""<a href="page1"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=11bUMmqlRJRDsWbfjkwqaD3--jv-DwkKo"></a>""",unsafe_allow_html=True)
+        st.markdown(f"""<a href="/page1?uid={st.session_state.get('uid')}" target="_self"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=11bUMmqlRJRDsWbfjkwqaD3--jv-DwkKo"></a>""",unsafe_allow_html=True)
     with col8:
-        st.markdown(f"""<a href="page2"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=12dSWYJO9didCNBMOAoTZkCUlHNFqffB3"></a>""",unsafe_allow_html=True)
+        st.markdown(f"""<a href="page2?uid={st.session_state.get('uid')}"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=12dSWYJO9didCNBMOAoTZkCUlHNFqffB3"></a>""",unsafe_allow_html=True)
     with col9:
         st.markdown(f"""<a href="www.google.com"><img class="columnImage" src="https://drive.google.com/uc?export=view&id=13UvmRI3tpKTF0B8KKvYJE7nLmGwSYbn2"></a>""",unsafe_allow_html=True)
 # Define the main page
 def main():
     # Check if the user is authenticated
-    if ("authenticated" not in st.session_state or not st.session_state["authenticated"]):
-        login()
+    params = st.experimental_get_query_params()
+    if(("authenticated" in st.session_state)or(params!={})):
+        Home()
     else:
         # Display the main page
         # Set common background image
         # Load image and convert to base64 string
-        Home()
+        login()
 
 
 # Run the app
