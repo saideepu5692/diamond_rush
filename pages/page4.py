@@ -38,8 +38,8 @@ answer4 = st.text_input("Enter your answer here", key="hint4")
 db = firestore.client()
 db.collection('my_collection').document(st.session_state.get('uid')).update({"answer4":answer4})
 
-
-if(answer4=='MLR'):
-    st.write("Correct! Go along the road to find new hint")
-else:
-    st.write("Wrong!Go to map page and try again")
+if(answer4):
+    if(answer4=='MLR'):
+        st.write("Correct! Go along the road to find new hint")
+    else:
+        st.write("Wrong!Go to map page and try again")
