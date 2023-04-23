@@ -107,6 +107,7 @@ def Home():
     db = firestore.client()
     # Store a variable in Firebase
     db.collection('my_collection').document(st.session_state.get('uid')).set({})
+    st.session_state['db']=db
     st.markdown("<style> ul {display: none;} </style>", unsafe_allow_html=True)
     # Define sidebar contents
     with st.sidebar:
