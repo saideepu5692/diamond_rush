@@ -43,7 +43,7 @@ if(answer51):
                 question54="How many people were there in total in the Attention to detail video?"
                 st.write(question54)
                 answer54=st.text_input("Enter your answer here", key="hint54")
-                if(answer54='9'):
+                if(answer54=='9'):
                     st.write("You have successfully exited the cave!! The treasure with a very big diamond is yours now! Thankyou for playing!")
                 else:
                     st.write("Wrong! Go to main page and try again")
