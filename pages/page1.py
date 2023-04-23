@@ -41,10 +41,9 @@ st.write("Clue")
 #st.markdown("<div style='text-align: center'><img src='https://drive.google.com/uc?export=view&id=1eoja7u80xJMDSUGCRkYtQvgT8AaoLkN-' width='100'></div>", unsafe_allow_html=True)
 
 st.image("https://drive.google.com/uc?export=view&id=1eoja7u80xJMDSUGCRkYtQvgT8AaoLkN-")
-db = firestore.client()
 
 # Store a variable in Firebase
-db.collection('my_collection').document(st.session_state.get('uid')).update({"answer1":answer1})
+st.session_state['db'].collection('my_collection').document(st.session_state.get('uid')).update({"answer1":answer1})
 
 if(answer1):
     st.write("You have entered your input. please return to main page by clicking below button")
