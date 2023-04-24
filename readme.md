@@ -34,8 +34,8 @@ NOTE: For ADMIN USER, please enter the ADMIN EMAIL ID AND ADMIN PASSWORD to trac
         a)5 clues
         b)4 dead-ends
         c)1 solution 
-        d)All the progress / user data (eg - time taken by each user for every step, solution accuracy, etc.) depending on your puzzle requirements should be stored for every user
-        e)On refreshing, from either browser or website, the puzzle should start from the same step or give the user an option to restart
+        d)All the progress / user data depending on the puzzle requirements is stored for every user
+        e)On ging to main page and then clicking onto same hin page, from either browser or website, the puzzle starts start from the same step or give the user an option to restart
         f)A dashboard for the admin where the progress of all the users can be tracked & analyzed
         g) A sidebar consisting the account details of user.
 //Additional Features//
