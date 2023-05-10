@@ -36,7 +36,8 @@ def login():
     'databaseURL': ""
     }
     if not firebase_admin._apps:
-        firebase = firebase_admin.initialize_app(firebaseConfig)
+        cred = credentials.Certificate(firebaseConfig)
+        firebase = firebase_admin.initialize_app(cred)
         auth = firebase.auth()
         db = firebase.database()
     def login_page():
