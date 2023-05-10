@@ -128,7 +128,7 @@ def admin():
     email=[]
     # Extract data from Firestore database
     users_ref = db.collection("my_collection")
-    for doc in users_ref:
+    for doc in users_ref.stream():
         data = doc.to_dict()
         answer1.append(data['answer1'])
         answer2.append(data['answer2'])
