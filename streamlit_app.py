@@ -1,4 +1,3 @@
-!pip install Pyrebase4
 import streamlit as st
 import pyrebase
 import json
