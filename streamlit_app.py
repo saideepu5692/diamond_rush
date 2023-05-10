@@ -1,5 +1,5 @@
 import streamlit as st
-import Pyrebase4 as pyrebase
+import pyrebase4 as pyrebase
 import json
 from PIL import Image
 import firebase_admin
