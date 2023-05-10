@@ -36,10 +36,14 @@ def login():
     'databaseURL': ""
     }
     if not firebase_admin._apps:
-        cred = credentials.Certificate(firebaseConfig)
-        firebase = firebase_admin.initialize_app(cred)
-        auth = firebase.auth()
-        db = firebase.database()
+        # Replace GITHUB_RAW_URL with the raw URL of your .json file in your GitHub repository
+        response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json")
+        json_content = response.json()
+        cred = credentials.Certificate(json_content)
+        firebase_admin.initialize_app(cred)
+        db = firestore.client()
+    else:
+        st.write("Oops can't connect to DB")
     def login_page():
         email = st.text_input("Email", key="login-email")
         password = st.text_input("Password", type="password", key="login-password")
