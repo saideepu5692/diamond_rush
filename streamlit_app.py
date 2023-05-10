@@ -1,5 +1,4 @@
 import streamlit as st
-import pyrebase
 import json
 from PIL import Image
 import firebase_admin
@@ -36,7 +35,7 @@ def login():
     'measurementId': "G-GHXB2SQLBF",
     'databaseURL': ""
     }
-    firebase = pyrebase.initialize_app(firebaseConfig)
+    firebase = firebase_admin.initialize_app(firebaseConfig)
     auth = firebase.auth()
     db = firebase.database()
     def login_page():
