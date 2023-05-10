@@ -1,6 +1,5 @@
 setuptools<58
 pycryptodome
 pycrypto
-pyrebase
-requests
+pyrebase4
 firebase-admin
