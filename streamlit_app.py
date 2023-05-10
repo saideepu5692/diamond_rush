@@ -42,8 +42,6 @@ def login():
         cred = credentials.Certificate(json_content)
         firebase_admin.initialize_app(cred)
         db = firestore.client()
-    else:
-        st.write("Oops can't connect to DB")
     def login_page():
         email = st.text_input("Email", key="login-email")
         password = st.text_input("Password", type="password", key="login-password")
