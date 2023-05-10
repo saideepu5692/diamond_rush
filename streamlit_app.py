@@ -35,9 +35,10 @@ def login():
     'measurementId': "G-GHXB2SQLBF",
     'databaseURL': ""
     }
-    firebase = firebase_admin.initialize_app(firebaseConfig)
-    auth = firebase.auth()
-    db = firebase.database()
+    if not firebase_admin._apps:
+        firebase = firebase_admin.initialize_app(firebaseConfig)
+        auth = firebase.auth()
+        db = firebase.database()
     def login_page():
         email = st.text_input("Email", key="login-email")
         password = st.text_input("Password", type="password", key="login-password")
