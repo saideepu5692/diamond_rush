@@ -3,6 +3,5 @@ pycryptodome
 pycrypto
 pyrebase4
 firebase-admin
-requests-toolbelt==0.10.1
-requests
+requests==2.7.0
 urllib3
