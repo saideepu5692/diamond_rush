@@ -1,5 +1,6 @@
 import streamlit as st
 import json
+import pyrebase
 from PIL import Image
 import firebase_admin
 from firebase_admin import credentials, firestore, auth
@@ -35,13 +36,9 @@ def login():
     'measurementId': "G-GHXB2SQLBF",
     'databaseURL': ""
     }
-    if not firebase_admin._apps:
-        # Replace GITHUB_RAW_URL with the raw URL of your .json file in your GitHub repository
-        response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json")
-        json_content = response.json()
-        cred = credentials.Certificate(json_content)
-        firebase_admin.initialize_app(cred)
-        db = firestore.client()
+    firebase = pyrebase.initialize_app(firebaseConfig)
+    auth = firebase.auth()
+    db = firebase.database()
     def login_page():
         email = st.text_input("Email", key="login-email")
         password = st.text_input("Password", type="password", key="login-password")
