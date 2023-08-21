@@ -2,7 +2,6 @@ import streamlit as st
 import json
 import firebase_admin
 from firebase_admin import credentials, auth
-from firebase_admin import firestore  # Import the firestore submodule
 from PIL import Image
 import requests
 import pandas as pd
@@ -21,7 +20,7 @@ response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_
 json_content = response.json()
 cred = credentials.Certificate(json_content)
 firebase_admin.initialize_app(cred)
-db = firestore.client()
+db = firebase_admin.firestore().client()
 
 # Define the login page
 def login():
