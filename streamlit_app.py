@@ -15,7 +15,7 @@ st.header("Welcome to Diamond Rush!")
 # Initialize Firebase SDK
 response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json")
 json_content = response.json()
-cred = credentials.Certificate(json_content)
+cred = credentials.Certificate(response)
 firebase_admin.initialize_app(cred)
 
 # Streamlit UI for login page
