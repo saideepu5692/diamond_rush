@@ -72,7 +72,7 @@ def login(email, password):
             # Redirect to the home page with images
         else:
             st.error("Invalid credentials.")
-    except auth.AuthError as e:
+    except firebase_admin.exceptions.FirebaseError as e:
         if "USER_NOT_FOUND" in str(e):
             st.error("User does not exist.")
         else:
