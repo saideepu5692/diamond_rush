@@ -1,7 +1,18 @@
 import streamlit as st
+import json
+import pyrebase
+from PIL import Image
 import firebase_admin
-from firebase_admin import credentials, auth
-
+from firebase_admin import credentials, firestore, auth
+import requests
+import pandas as pd
+st.set_page_config(
+    page_title="My Streamlit App",
+    page_icon=":guardsman:",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+)
+st.header("Welcome to Diamond Rush!")
 # Initialize Firebase SDK
 response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json")
 json_content = response.json()
