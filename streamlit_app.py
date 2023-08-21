@@ -35,7 +35,7 @@ if not firebase_admin._apps:
     st.write("Firebase SDK initialized successfully!")
 
     # Clean up temporary file
-    temp_json_file.unlink()
+    #temp_json_file.unlink()
 else:
     st.write("Firebase SDK is already initialized!")
 
