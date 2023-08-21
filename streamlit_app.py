@@ -6,7 +6,7 @@ from PIL import Image
 import requests
 import pandas as pd
 import datetime
-import google.cloud import firestore
+from google.cloud import firestore
 
 # Set Streamlit page config
 st.set_page_config(
