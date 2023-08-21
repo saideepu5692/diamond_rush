@@ -4,6 +4,7 @@ from PIL import Image
 import firebase_admin
 from firebase_admin import credentials, auth
 import requests
+import tempfile
 import pandas as pd
 st.set_page_config(
     page_title="My Streamlit App",
@@ -12,13 +13,18 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 st.header("Welcome to Diamond Rush!")
-# Initialize Firebase SDK
+# Fetch Firebase credentials JSON from GitHub
 credentials_url = "https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json"
 response = requests.get(credentials_url)
 json_content = response.json()
 
+# Create a temporary file to write the JSON content
+temp_json_file = tempfile.NamedTemporaryFile(delete=False, suffix=".json")
+temp_json_file.write(response.content)
+temp_json_file.close()
+
 # Initialize Firebase SDK
-cred = credentials.Certificate(json_content)
+cred = credentials.Certificate(temp_json_file.name)
 firebase_admin.initialize_app(cred)
 
 # Streamlit UI for login page
