@@ -6,3 +6,4 @@ google-cloud-firestore
 firebase-admin
 requests==2.5.0
 urllib3==1.19.1
+pyrebase
