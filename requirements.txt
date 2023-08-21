@@ -2,7 +2,7 @@ pip
 setuptools<58
 pycryptodome
 pipdeptree
-pyrebase4==4.6.0
+pyrebase
 pycrypto
 google-cloud
 firebase-admin==4.5.2
