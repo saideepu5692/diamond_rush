@@ -18,14 +18,25 @@ credentials_url = "https://raw.githubusercontent.com/saideepu5692/diamond_rush/m
 response = requests.get(credentials_url)
 json_content = response.json()
 
-# Create a temporary file to write the JSON content
-temp_json_file = tempfile.NamedTemporaryFile(delete=False, suffix=".json")
-temp_json_file.write(response.content)
-temp_json_file.close()
+# Check if the Firebase app is already initialized
+if not firebase_admin._apps:
+    # Create a temporary file to write the JSON content
+    temp_json_file = tempfile.NamedTemporaryFile(delete=False, suffix=".json")
+    temp_json_file.write(response.content)
+    temp_json_file.close()
 
-# Initialize Firebase SDK
-cred = credentials.Certificate(temp_json_file.name)
-firebase_admin.initialize_app(cred)
+    # Initialize Firebase SDK
+    cred = credentials.Certificate(temp_json_file.name)
+    firebase_admin.initialize_app(cred)
+
+    st.write("Firebase SDK initialized successfully!")
+
+    # Clean up temporary file
+    temp_json_file.unlink()
+else:
+    st.write("Firebase SDK is already initialized!")
+
+# Rest of your Streamlit app code
 
 # Streamlit UI for login page
 st.title("Login Page")
