@@ -41,8 +41,10 @@ def login():
     credentials_url = "https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json"
     response = requests.get(credentials_url)
     json_content = response.json()
+    cred2 = credentials.Certificate(json.loads(json_object))
+    firebase2 = firebase_admin.initialize_app(cred2)
     #cred = credentials.Certificate(temp_json_file.name)
-    firebase = firebase_admin.initialize_app(json_object)
+    firebase = firebase_admin.initialize_app(firebase2)
     auth = firebase.auth()
     db = firebase.database()
     def login_page():
