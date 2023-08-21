@@ -56,6 +56,7 @@ def login():
             else:
                 try:
                     user = firebase_admin.auth.get_user_by_email(email)
+                    st.write(user)
                     auth_user = firebase_admin.auth.verify_password_reset_code(password)
                     if auth_user.uid == user.uid:
                         st.session_state.logged_in = True
