@@ -5,5 +5,5 @@ pipdeptree
 pyrebase
 pycrypto
 firebase-admin==4.5.2
-requests==2.5.0
+requests
 urllib3==1.19.1
