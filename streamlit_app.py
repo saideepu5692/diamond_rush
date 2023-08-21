@@ -41,7 +41,7 @@ def login():
     response = requests.get(credentials_url)
     json_content = response.json()
     #cred = credentials.Certificate(temp_json_file.name)
-    firebase = firebase_admin.initialize_app(firebaseConfig)
+    firebase = firebase_admin.initialize_app(firebaseConfig.json())
     auth = firebase.auth()
     db = firebase.database()
     def login_page():
