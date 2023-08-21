@@ -2,8 +2,7 @@ import streamlit as st
 import json
 from PIL import Image
 import firebase_admin
-from firebase_admin import credentials, firestore, auth
-import pyrebase
+from firebase_admin import credentials, firestore, auth,db
 import requests
 import pandas as pd
 import tempfile
