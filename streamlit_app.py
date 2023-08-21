@@ -5,6 +5,7 @@ import firebase_admin
 from firebase_admin import credentials, firestore, auth
 import requests
 import pandas as pd
+import tempfile
 st.set_page_config(
     page_title="My Streamlit App",
     page_icon=":guardsman:",
