@@ -69,16 +69,14 @@ def login(email, password):
             st.session_state.logged_in = True
             st.session_state.user_email = email
             st.success("Login successful!")
-
-            # Determine if the user is admin
-            if email == "admin@example.com":  # Replace with actual admin email
-                st.session_state.is_admin = True
-
             # Redirect to the home page with images
         else:
             st.error("Invalid credentials.")
-    except auth.AuthError:
-        st.error("Invalid credentials.")
+    except auth.AuthError as e:
+        if "USER_NOT_FOUND" in str(e):
+            st.error("User does not exist.")
+        else:
+            st.error("Invalid credentials.")
 
 # Create user function
 def create_user(email, password):
