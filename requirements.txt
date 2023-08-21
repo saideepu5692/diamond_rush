@@ -3,7 +3,6 @@ setuptools<58
 pycryptodome
 pipdeptree
 pyrebase
-pycrypto
 firebase-admin==4.5.2
 requests
 urllib3==1.19.1
