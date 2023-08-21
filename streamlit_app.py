@@ -2,7 +2,7 @@ import streamlit as st
 import json
 from PIL import Image
 import firebase_admin
-from firebase_admin import credentials, firestore, auth
+from firebase_admin import credentials, auth
 import requests
 import pandas as pd
 st.set_page_config(
