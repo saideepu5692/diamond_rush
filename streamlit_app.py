@@ -20,7 +20,7 @@ response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_
 json_content = response.json()
 cred = credentials.Certificate(json_content)
 firebase_admin.initialize_app(cred)
-db = firebase_admin.firestore().client()
+db = firebase_admin.firestore.client()
 
 # Define the login page
 def login():
