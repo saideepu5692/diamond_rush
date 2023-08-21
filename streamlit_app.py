@@ -40,24 +40,8 @@ def login():
     credentials_url = "https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json"
     response = requests.get(credentials_url)
     json_content = response.json()
-    
-    # Check if the Firebase app is already initialized
-    if not firebase_admin._apps:
-        # Create a temporary file to write the JSON content
-        temp_json_file = tempfile.NamedTemporaryFile(delete=False, suffix=".json")
-        temp_json_file.write(response.content)
-        temp_json_file.close()
-    
-        # Initialize Firebase SDK
-        cred = credentials.Certificate(temp_json_file.name)
-        firebase = firebase_admin.initialize_app(cred)
-    
-        st.write("Firebase SDK initialized successfully!")
-    
-        # Clean up temporary file
-        #temp_json_file.unlink()
-    else:
-        st.write("Firebase SDK is already initialized!")
+    #cred = credentials.Certificate(temp_json_file.name)
+    firebase = firebase_admin.initialize_app(json_content)
     auth = firebase.auth()
     db = firebase.database()
     def login_page():
