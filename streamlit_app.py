@@ -63,8 +63,8 @@ if "session_state" not in st.session_state:
 # Login function
 def login(email, password):
     try:
-        user = auth.get_user_by_email(email)
-        auth_user = auth.verify_password_reset_code(password)
+        user = firebase_admin.auth.get_user_by_email(email)
+        auth_user = firebase_admin.auth.verify_password_reset_code(password)
         if auth_user.uid == user.uid:
             st.session_state.logged_in = True
             st.session_state.user_email = email
@@ -72,7 +72,7 @@ def login(email, password):
             # Redirect to the home page with images
         else:
             st.error("Invalid credentials.")
-    except firebase_admin.exceptions.FirebaseError as e:
+    except firebase_admin.auth.AuthError as e:
         if "USER_NOT_FOUND" in str(e):
             st.error("User does not exist.")
         else:
