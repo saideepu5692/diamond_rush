@@ -25,25 +25,28 @@ def authenticate(username, password):
 def login():
     st.markdown("<style> ul {display: none;} </style>", unsafe_allow_html=True)
 
-    firebaseConfig = {
-        # Add your Firebase configuration details here
-        'apiKey': "AIzaSyBaP-ig_zlk7o5ixfg2NVDoSlaSuHfZCV0",
-    'authDomain': "diamond-rush-0808.firebaseapp.com",
-    'projectId': "diamond-rush-0808",
-    'storageBucket': "diamond-rush-0808.appspot.com",
-    'messagingSenderId': "519582232920",
-    'appId': "1:519582232920:web:a579fdbd905bcedb57752d",
-    'measurementId': "G-GHXB2SQLBF",
-    'databaseURL': ""
-    }
     # Fetch Firebase credentials JSON from GitHub
     credentials_url = "https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json"
     response = requests.get(credentials_url)
     json_content = response.json()
-    cred2 = credentials.Certificate(json_content)
-    firebase = firebase_admin.initialize_app(cred2,name='my_app')
-    auth = firebase.auth()
-    db = firebase.database()
+    
+    # Check if the Firebase app is already initialized
+    if not firebase_admin._apps:
+        # Create a temporary file to write the JSON content
+        temp_json_file = tempfile.NamedTemporaryFile(delete=False, suffix=".json")
+        temp_json_file.write(response.content)
+        temp_json_file.close()
+    
+        # Initialize Firebase SDK
+        cred = credentials.Certificate(temp_json_file.name)
+        firebase_admin.initialize_app(cred)
+    
+        st.write("Firebase SDK initialized successfully!")
+    
+        # Clean up temporary file
+        temp_json_file.unlink()
+    else:
+        st.write("Firebase SDK is already initialized!")
     def login_page():
         email = st.text_input("Email", key="login-email")
         password = st.text_input("Password", type="password", key="login-password")
