@@ -17,7 +17,7 @@ response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_
 json_content = response.json()
 st.write("response",response)
 st.write("json",json_content)
-cred = credentials.Certificate(str(response))
+cred = credentials.Certificate(str(json_content))
 firebase_admin.initialize_app(cred)
 
 # Streamlit UI for login page
