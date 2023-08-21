@@ -1,7 +1,8 @@
 import streamlit as st
 import json
 import firebase_admin
-from firebase_admin import credentials,auth, firestore
+from firebase_admin import credentials, auth
+from firebase_admin import firestore  # Import the firestore submodule
 from PIL import Image
 import requests
 import pandas as pd
