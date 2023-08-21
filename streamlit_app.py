@@ -6,6 +6,7 @@ from PIL import Image
 import requests
 import pandas as pd
 import datetime
+import tempfile
 
 # Set Streamlit page config
 st.set_page_config(
