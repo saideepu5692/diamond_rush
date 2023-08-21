@@ -56,7 +56,7 @@ def login():
             else:
                 try:
                     user = firebase_admin.auth.get_user_by_email(email)
-                    user = firebase_admin.auth.sign_in_with_email_and_password(email, password)
+                    user = auth.sign_in_with_email_and_password(email, password)
                     st.write(user.uid)
                     st.write(auth_user.uid)
                     if auth_user.uid == user.uid:
