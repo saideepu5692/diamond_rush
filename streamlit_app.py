@@ -2,11 +2,11 @@ import streamlit as st
 import json
 import firebase_admin
 from firebase_admin import credentials,auth
+import firebase_admin.firestore as firestore
 from PIL import Image
 import requests
 import pandas as pd
 import datetime
-from google.cloud import firestore
 
 # Set Streamlit page config
 st.set_page_config(
