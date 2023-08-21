@@ -1,6 +1,6 @@
 import streamlit as st
 import json
-import pyrebase
+import pyrebase4 as pyrebase
 from PIL import Image
 import firebase_admin
 from firebase_admin import credentials, firestore, auth
