@@ -83,16 +83,22 @@ def create_user(email, password):
     try:
         user = auth.create_user(email=email, password=password)
         st.success("User created successfully!")
-    except auth.AuthError:
-        st.error("Failed to create user.")
+    except Exception as e:
+        if "EMAIL_EXISTS" in str(e):
+            st.error("Email already exists.")
+        else:
+            st.error("Failed to create user.")
 
 # Forgot password function
 def forgot_password(email):
     try:
         auth.generate_password_reset_link(email)
         st.success("Password reset link sent to your email.")
-    except auth.AuthError:
-        st.error("Failed to send reset link.")
+    except Exception as e:
+        if "USER_NOT_FOUND" in str(e):
+            st.error("User does not exist.")
+        else:
+            st.error("Failed to send reset link.")
 
 # Handle button clicks
 if create_user_button:
