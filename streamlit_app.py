@@ -13,10 +13,11 @@ st.set_page_config(
 )
 st.header("Welcome to Diamond Rush!")
 # Initialize Firebase SDK
-response = requests.get("https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json")
+credentials_url = "https://raw.githubusercontent.com/saideepu5692/diamond_rush/main/support/diamond-rush-0808-firebase-adminsdk-fm0jo-2d5090e23a.json"
+response = requests.get(credentials_url)
 json_content = response.json()
-st.write("response",response)
-st.write("json",json_content)
+
+# Initialize Firebase SDK
 cred = credentials.Certificate(json_content)
 firebase_admin.initialize_app(cred)
 
