@@ -10,7 +10,11 @@ import json
 params = st.experimental_get_query_params()
 
 # Access the parameter values by key
-st.session_state['uid'] = params.get('uid')[0]
+uid_parameter = params.get('uid')
+if uid_parameter is not None and len(uid_parameter) > 0:
+    st.session_state['uid'] = uid_parameter[0]
+else:
+    st.error("Invalid or missing 'uid' parameter.")
 
 if not firebase_admin._apps:
         # Replace GITHUB_RAW_URL with the raw URL of your .json file in your GitHub repository
